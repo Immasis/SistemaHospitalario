@@ -1,0 +1,145 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f9ff;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #009d59;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #e6f0ff;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.buttons {
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  background-color: #009d59;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #009d59;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #009d59;
+  color: #009d59;
+  
+}
+
+.btn-outline:hover {
+  background-color: #009d59;
+  color: white;
+}
+
+/* Funcionalidades */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+/* Tarjetas clickeables */
+.grid a.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grid a.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  color: #009d59;
+}
+
+/* Iconos dentro de las tarjetas */
+.grid a.card i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.grid a.card:hover i {
+  color: #009d59;
+}
+
+/* Títulos y párrafos dentro */
+.grid a.card h3 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.grid a.card p {
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+
+/* Footer */
+footer {
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}

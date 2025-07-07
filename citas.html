@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Citas - HospitalSys</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">HospitalSys</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="inicio-sesion.html">Inicio de Sesión</a></li>
+      <li><a href="prioridad.html">Asignación de Prioridad</a></li>
+      <li><a href="disponibilidad.html">Disponibilidad Médica</a></li>
+      <li><a href="asignacion-horarios.html">Asignación de Horarios</a></li>
+      <li><a href="panel-administrativo.html">Panel Administrativo</a></li>
+      <li><a href="notificaciones.html">Notificaciones</a></li>
+      <li><a href="soporte.html">Soporte</a></li>
+    </ul>
+  </nav>
+
+  <main class="section">
+    <h1><i class="fas fa-calendar-check"></i> Gestión de Citas Médicas</h1>
+    <button class="btn btn-primary">Solicitar Nueva Cita</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Especialidad</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>10/07/2025</td>
+          <td>10:00 AM</td>
+          <td>Cardiología</td>
+          <td><span class="status confirmed">Confirmada</span></td>
+          <td>
+            <button class="btn-small">Modificar</button>
+            <button class="btn-small btn-danger">Cancelar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>María Gómez</td>
+          <td>11/07/2025</td>
+          <td>02:30 PM</td>
+          <td>Neurología</td>
+          <td><span class="status pending">Pendiente</span></td>
+          <td>
+            <button class="btn-small">Modificar</button>
+            <button class="btn-small btn-danger">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HospitalSys – Proyecto académico</p>
+  </footer>
+</body>
+</html>
