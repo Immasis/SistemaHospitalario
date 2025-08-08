@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gestión de Citas - HospitalSys</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <nav class="navbar">
@@ -27,7 +24,19 @@
 
   <main class="section">
     <h1><i class="fas fa-calendar-check"></i> Gestión de Citas Médicas</h1>
-    <button class="btn btn-primary">Solicitar Nueva Cita</button>
+    
+    <form id="formCita">
+      <input type="text" name="paciente" placeholder="Nombre del paciente" required>
+      <input type="date" name="fecha" required>
+      <input type="time" name="hora" required>
+      <input type="text" name="especialidad" placeholder="Especialidad" required>
+      <select name="estado">
+        <option value="Pendiente">Pendiente</option>
+        <option value="Confirmada">Confirmada</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Solicitar Nueva Cita</button>
+    </form>
+
     <table>
       <thead>
         <tr>
@@ -39,29 +48,8 @@
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Juan Pérez</td>
-          <td>10/07/2025</td>
-          <td>10:00 AM</td>
-          <td>Cardiología</td>
-          <td><span class="status confirmed">Confirmada</span></td>
-          <td>
-            <button class="btn-small">Modificar</button>
-            <button class="btn-small btn-danger">Cancelar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>María Gómez</td>
-          <td>11/07/2025</td>
-          <td>02:30 PM</td>
-          <td>Neurología</td>
-          <td><span class="status pending">Pendiente</span></td>
-          <td>
-            <button class="btn-small">Modificar</button>
-            <button class="btn-small btn-danger">Cancelar</button>
-          </td>
-        </tr>
+      <tbody id="tablaCitas">
+        <!-- Aquí se cargan las citas con JS -->
       </tbody>
     </table>
   </main>
@@ -69,5 +57,7 @@
   <footer>
     <p>&copy; 2025 HospitalSys – Proyecto académico</p>
   </footer>
+
+  <script src="gestioncitas.js"></script>
 </body>
 </html>
