@@ -18,7 +18,6 @@ function cargarCitas() {
             <p><strong>Fecha:</strong> ${cita.fecha}</p>
             <p><strong>Hora:</strong> ${cita.hora}</p>
             <p><strong>Especialidad:</strong> ${cita.especialidad}</p>
-            <p><strong>Estado:</strong> ${cita.estado}</p>
             <hr/>
           </div>
         `;
@@ -34,14 +33,12 @@ function cargarCitas() {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  const paciente = document.getElementById('paciente').value.trim();
   const specialty = document.getElementById('specialty').value;
-  //const days = document.getElementById('days').value;
- // const hours = document.getElementById('hours').value;
   const fecha = document.getElementById('fecha').value;
   const hora = document.getElementById('hora').value;
-  const paciente = document.getElementById('paciente').value;
 
-  if (!specialty  || !fecha || !hora) {
+  if (!paciente || !specialty || !fecha || !hora) {
     mensajeDiv.textContent = "Por favor completa todos los campos.";
     mensajeDiv.style.color = "red";
     return;
@@ -49,10 +46,9 @@ form.addEventListener('submit', (event) => {
 
   const formData = new FormData();
   formData.append('paciente', paciente);
+  formData.append('especialidad', specialty);
   formData.append('fecha', fecha);
   formData.append('hora', hora);
-  formData.append('especialidad', specialty);
-
 
   fetch('guardar_citas.php', {
     method: 'POST',
@@ -60,7 +56,6 @@ form.addEventListener('submit', (event) => {
   })
   .then(response => response.text())
   .then(data => {
-    console.log('Respuesta del servidor:', data);
     mensajeDiv.textContent = data;
     mensajeDiv.style.color = data.includes("correctamente") ? "green" : "red";
     if (data.includes("correctamente")) {
@@ -69,11 +64,10 @@ form.addEventListener('submit', (event) => {
     }
   })
   .catch(error => {
-    console.error('Error en la petición:', error);
-    mensajeDiv.textContent = "Error al hacer la petición";
+    console.error('Error en la peticion:', error);
+    mensajeDiv.textContent = "Error al hacer la peticion";
     mensajeDiv.style.color = "red";
   });
 });
-
 
 window.addEventListener('DOMContentLoaded', cargarCitas);
