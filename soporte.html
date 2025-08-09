@@ -9,6 +9,42 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
+  <style>
+    .contact-info, .social-media, .map, .form-message {
+      margin: 20px 0;
+    }
+    main.section {
+    padding: 0 20px;
+    }
+    .faq dt {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .faq dd {
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+    .social-media a {
+      margin-right: 15px;
+      font-size: 1.8em;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .social-media a:hover {
+      color: #0056b3;
+    }
+    .form-message {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -27,6 +63,7 @@
 
   <main class="section">
     <h1><i class="fas fa-headset"></i> Soporte Técnico y Administrativo</h1>
+
     <section class="faq">
       <h2>Preguntas Frecuentes</h2>
       <dl>
@@ -44,25 +81,79 @@
       </dl>
     </section>
 
+    <section class="contact-info">
+      <h2>Información de Contacto</h2>
+      <p><strong>Teléfono:</strong> +506 1234 5678</p>
+      <p><strong>Email:</strong> soporte@hospital.com</p>
+      <p><strong>Horario de Atención:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM</p>
+    </section>
+
+    <section class="social-media">
+      <h2>Síguenos en Redes Sociales</h2>
+      <a href="https://facebook.com/hospitalsys" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/hospitalsys" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com/hospitalsys" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </section>
+
+    <section class="map">
+      <h2>Nuestra Ubicación</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.503103440937!2d-84.08361728459715!3d9.933663492920878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e1e36e4deedf%3A0x8a48f372d0bb7b7a!2sHospital%20San%20Juan%20de%20Dios!5e0!3m2!1ses!2scr!4v1691511385576!5m2!1ses!2scr"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+
     <section class="contact">
       <h2>Contáctanos</h2>
-      <form onsubmit="return false;">
+      <form id="contactForm">
         <label for="name">Nombre:</label>
         <input type="text" id="name" placeholder="Tu nombre" required />
 
         <label for="email">Correo Electrónico:</label>
         <input type="email" id="email" placeholder="tu@email.com" required />
 
+        <label for="subject">Asunto:</label>
+        <input type="text" id="subject" placeholder="Asunto del mensaje" required />
+
         <label for="message">Mensaje:</label>
         <textarea id="message" rows="4" placeholder="Escribe tu consulta..." required></textarea>
 
         <button type="submit" class="btn">Enviar</button>
       </form>
+      <div class="form-message" id="formMessage" role="alert" aria-live="polite"></div>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 HospitalSys – Proyecto académico</p>
   </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const formMessage = document.getElementById('formMessage');
+
+      if (!name || !email || !subject || !message) {
+        formMessage.textContent = 'Por favor, completa todos los campos.';
+        formMessage.style.color = 'red';
+        return;
+      }
+
+      formMessage.style.color = 'green';
+      formMessage.textContent = 'Enviando mensaje...';
+
+      setTimeout(() => {
+        formMessage.textContent = '¡Mensaje enviado con éxito! Nos contactaremos pronto.';
+        document.getElementById('contactForm').reset();
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
