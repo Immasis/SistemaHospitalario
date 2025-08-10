@@ -18,3 +18,5 @@ CREATE TABLE IF NOT EXISTS citas (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+ALTER TABLE citas ADD prioridad ENUM('alta', 'media', 'baja') DEFAULT 'media'; -- Para manejar la prioridad de las citas 

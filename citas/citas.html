@@ -29,16 +29,19 @@
     <h1><i class="fas fa-calendar-check"></i> Gestión de Citas Médicas</h1>
     
     <form id="formCita">
-      <input type="text" name="paciente" placeholder="Nombre del paciente" required>
-      <input type="date" name="fecha" required>
-      <input type="time" name="hora" required>
-      <input type="text" name="especialidad" placeholder="Especialidad" required>
-      <select name="estado">
-        <option value="Pendiente">Pendiente</option>
-        <option value="Confirmada">Confirmada</option>
-      </select>
+        <input type="text" name="paciente" placeholder="Nombre del paciente" required>
+        <input type="number" name="edad" placeholder="Edad" required>
+        <input type="text" name="enfermedad" placeholder="Enfermedad o condición">
+        <input type="date" name="fecha" required>
+        <input type="time" name="hora" required>
+        <input type="text" name="especialidad" placeholder="Especialidad" required>
+          <select name="estado">
+            <option value="Pendiente">Pendiente</option>
+            <option value="Confirmada">Confirmada</option>
+          </select>
       <button type="submit" class="btn btn-primary">Solicitar Nueva Cita</button>
     </form>
+
 
     <table>
       <thead>
@@ -48,6 +51,7 @@
           <th>Hora</th>
           <th>Especialidad</th>
           <th>Estado</th>
+          <th>Prioridad</th> <!-- Nueva columna -->
           <th>Acciones</th>
         </tr>
       </thead>
@@ -55,6 +59,7 @@
         <!-- Aquí se cargan las citas con JS -->
       </tbody>
     </table>
+
   </main>
 
   <footer>

@@ -14,6 +14,7 @@ function cargarCitas() {
                         <td>${cita.hora}</td>
                         <td>${cita.especialidad}</td>
                         <td><span class="status ${cita.estado.toLowerCase()}">${cita.estado}</span></td>
+                        <td><span class="prioridad ${cita.prioridad}">${cita.prioridad}</span></td>
                         <td>
                             <button class="btn-small btn-danger" onclick="eliminarCita(${cita.id})">Cancelar</button>
                         </td>
@@ -22,6 +23,7 @@ function cargarCitas() {
             });
         });
 }
+
 
 document.getElementById("formCita").addEventListener("submit", function(e) {
     e.preventDefault();

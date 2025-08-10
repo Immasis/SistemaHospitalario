@@ -4,11 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Asignación de Prioridad - HospitalSys</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="styles(1).css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    .form-container {
+      max-width: 500px;
+      margin: 20px auto;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .form-container input, .form-container select, .form-container button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .priority-result {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .alta { background-color: #f8d7da; color: #721c24; }
+    .media { background-color: #fff3cd; color: #856404; }
+    .baja { background-color: #d4edda; color: #155724; }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -30,30 +57,66 @@
 
   <main class="section">
     <h1><i class="fas fa-triangle-exclamation"></i> Asignación Automática de Prioridad</h1>
-    <p>El sistema determina la prioridad del paciente según los siguientes criterios:</p>
-    <ul class="priority-list">
-      <li><strong>Edad:</strong> Pacientes mayores de 65 años tienen prioridad alta.</li>
-      <li><strong>Enfermedades:</strong> Pacientes con enfermedades crónicas o graves.</li>
-      <li><strong>Situación socioeconómica:</strong> Casos vulnerables reciben atención preferencial.</li>
-    </ul>
-    <div class="priority-examples">
-      <div class="priority-card high">
-        <h3>Prioridad Alta</h3>
-        <p>Paciente: Ana, 70 años con diabetes y problemas cardíacos.</p>
-      </div>
-      <div class="priority-card medium">
-        <h3>Prioridad Media</h3>
-        <p>Paciente: Luis, 45 años con hipertensión controlada.</p>
-      </div>
-      <div class="priority-card low">
-        <h3>Prioridad Baja</h3>
-        <p>Paciente: Carlos, 30 años sin enfermedades preexistentes.</p>
-      </div>
+
+    <div class="form-container">
+      <form method="POST" action="guardar_prioridad.php" onsubmit="return asignarPrioridad()">
+        <label>ID de Cita</label>
+        <input type="number" name="id_cita" required>
+
+        <label>Edad del Paciente</label>
+        <input type="number" id="edad" required>
+
+        <label>Enfermedad</label>
+        <select id="enfermedad">
+          <option value="ninguna">Ninguna</option>
+          <option value="cronica">Crónica</option>
+          <option value="grave">Grave</option>
+        </select>
+
+        <label>Situación Socioeconómica</label>
+        <select id="situacion">
+          <option value="normal">Normal</option>
+          <option value="vulnerable">Vulnerable</option>
+        </select>
+
+        <input type="hidden" name="prioridad" id="prioridad">
+
+        <div id="resultado" class="priority-result"></div>
+
+        <button type="submit">Guardar Prioridad</button>
+      </form>
     </div>
   </main>
 
   <footer>
     <p>&copy; 2025 HospitalSys – Proyecto académico</p>
   </footer>
+
+  <script>
+    function asignarPrioridad() {
+      let edad = parseInt(document.getElementById("edad").value);
+      let enfermedad = document.getElementById("enfermedad").value;
+      let situacion = document.getElementById("situacion").value;
+      let prioridad = "Baja";
+      let resultado = document.getElementById("resultado");
+
+      if (edad > 65 || enfermedad === "grave" || situacion === "vulnerable") {
+        prioridad = "Alta";
+        resultado.className = "priority-result alta";
+        resultado.innerText = "Prioridad Alta asignada automáticamente.";
+      } else if (edad >= 45 || enfermedad === "cronica") {
+        prioridad = "Media";
+        resultado.className = "priority-result media";
+        resultado.innerText = "Prioridad Media asignada automáticamente.";
+      } else {
+        prioridad = "Baja";
+        resultado.className = "priority-result baja";
+        resultado.innerText = "Prioridad Baja asignada automáticamente.";
+      }
+
+      document.getElementById("prioridad").value = prioridad;
+      return true;
+    }
+  </script>
 </body>
 </html>
