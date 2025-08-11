@@ -10,7 +10,7 @@ function cargarCitas() {
         listaCitasDiv.innerHTML = '<h2>Citas Guardadas</h2><p>No hay citas guardadas.</p>';
         return;
       }
-      let html = '<h2>Citas Guardadas</h2>';
+      let html = '<h2>Medicos Disponibles</h2>';
       citas.forEach(cita => {
         html += `
           <div class="cita">

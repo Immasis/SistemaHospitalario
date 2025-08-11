@@ -14,4 +14,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Error: " . $conn->error;
     }
 }
+
+
+if ($stmt->execute()) {
+    echo "Prioridad actualizada correctamente.";
+
+    
+    $paciente_email = 'correo_del_paciente@ejemplo.com'; 
+    $mail = configurarPHPMailer();
+    if ($mail) {
+        try {
+            $mail->addAddress($paciente_email);
+            $mail->Subject = 'Actualización de tu cita - HospitalSys';
+            $mail->Body    = "Hola,<br>Tu prioridad ha sido actualizada a **{$prioridad}**.";
+            $mail->send();
+        } catch (Exception $e) {
+            error_log("Error al enviar notificación de actualización.");
+        }
+    }
+}
+
 ?>
