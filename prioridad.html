@@ -93,30 +93,40 @@
   </footer>
 
   <script>
-    function asignarPrioridad() {
-      let edad = parseInt(document.getElementById("edad").value);
-      let enfermedad = document.getElementById("enfermedad").value;
-      let situacion = document.getElementById("situacion").value;
-      let prioridad = "Baja";
-      let resultado = document.getElementById("resultado");
+  function asignarPrioridad() {
+    let edad = parseInt(document.getElementById("edad").value);
+    let enfermedad = document.getElementById("enfermedad").value;
+    let situacion = document.getElementById("situacion").value;
+    let prioridad = "Baja";
+    let resultado = document.getElementById("resultado");
 
-      if (edad > 65 || enfermedad === "grave" || situacion === "vulnerable") {
-        prioridad = "Alta";
-        resultado.className = "priority-result alta";
-        resultado.innerText = "Prioridad Alta asignada automáticamente.";
-      } else if (edad >= 45 || enfermedad === "cronica") {
-        prioridad = "Media";
-        resultado.className = "priority-result media";
-        resultado.innerText = "Prioridad Media asignada automáticamente.";
-      } else {
-        prioridad = "Baja";
-        resultado.className = "priority-result baja";
-        resultado.innerText = "Prioridad Baja asignada automáticamente.";
-      }
-
-      document.getElementById("prioridad").value = prioridad;
-      return true;
+    if (edad > 65 || enfermedad === "grave" || situacion === "vulnerable") {
+      prioridad = "Alta";
+      resultado.className = "priority-result alta";
+      resultado.innerText = "Prioridad Alta asignada automáticamente.";
+    } else if (edad >= 45 || enfermedad === "cronica") {
+      prioridad = "Media";
+      resultado.className = "priority-result media";
+      resultado.innerText = "Prioridad Media asignada automáticamente.";
+    } else {
+      prioridad = "Baja";
+      resultado.className = "priority-result baja";
+      resultado.innerText = "Prioridad Baja asignada automáticamente.";
     }
-  </script>
+
+    // Guardar prioridad en el input oculto
+    document.getElementById("prioridad").value = prioridad;
+
+    // Alert de inicio de sesión correcto
+    alert("Prioridad guardada");
+
+    // Redirigir a la página principal
+    
+
+    // Evitar que se envíe el formulario si solo quieres mostrar alert y redirigir
+    return false;
+  }
+</script>
+
 </body>
 </html>
