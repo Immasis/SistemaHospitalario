@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 require_once 'conexion/conexion.php';
 
-$sql = "SELECT paciente, fecha, hora, especialidad, estado FROM citas ORDER BY fecha DESC, hora DESC";
+$sql = "SELECT paciente, fecha, hora, especialidad, estado, prioridad FROM citas ORDER BY fecha DESC, hora DESC";
 $result = $conn->query($sql);
 
 $citas = [];
@@ -18,3 +18,4 @@ echo json_encode($citas);
 
 $conn->close();
 ?>
+
