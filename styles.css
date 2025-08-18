@@ -167,3 +167,12 @@ footer {
   font-size: 0.9rem;
   margin-top: 2rem;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: #F0D400;
+    color: white;
+}
